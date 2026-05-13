@@ -149,7 +149,7 @@ td{padding:10px 12px;vertical-align:middle;font-size:12px}
 .ab.ax:hover{border-color:var(--dt);color:var(--dt)}
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
 .ov.on{display:flex}
-.modal{background:#FFFFFF;border:.5px solid var(--bo);border-radius:var(--rb);width:100%;max-width:660px;max-height:92vh;display:flex;flex-direction:column;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+.modal{background:#FFFFFF;border:.5px solid var(--bo);border-radius:var(--rb);width:100%;max-width:780px;max-height:92vh;display:flex;flex-direction:column;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.15)}
 .modal::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--au),transparent)}
 .msm{max-width:400px}.mmd{max-width:520px}
 .mh{padding:1.1rem 1.3rem;border-bottom:.5px solid var(--bo);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
@@ -388,25 +388,68 @@ td{padding:10px 12px;vertical-align:middle;font-size:12px}
         <div class="fg"><label class="fl">Numero de vuelo</label><input id="ffl" placeholder="AM 456"></div>
       </div>
       <div class="fsep">Detalle del traslado</div>
-      <div class="r2">
-        <div class="fg"><label class="fl">Origen / Pickup *</label><input id="fori" placeholder="Hotel, Terminal..."><div class="fe" id="eor"></div></div>
+      <div class="r2" style="margin-bottom:.8rem">
+        <div class="fg"><label class="fl">Origen / Pickup *</label>
+<select id="fori" onchange="autoPrice()">
+<option value="">Selecciona origen...</option>
+<option value="JW Marriott">JW Marriott</option>
+<option value="Aeropuerto GDL">Aeropuerto GDL</option>
+<option value="Aeropuerto - FBO">Aeropuerto - FBO</option>
+<option value="Hotel Riu">Hotel Riu</option>
+<option value="Camino Real">Camino Real</option>
+<option value="Hotel Demetria">Hotel Demetria</option>
+<option value="Quinta Real">Quinta Real</option>
+<option value="Westin / Zona Expo">Westin / Zona Expo</option>
+<option value="Andares">Andares</option>
+<option value="Zona Providencia">Zona Providencia</option>
+<option value="Zona Minerva">Zona Minerva</option>
+<option value="Zona Chapultepec">Zona Chapultepec</option>
+<option value="Zona Chapalita">Zona Chapalita</option>
+<option value="Zona Expo / Plaza del Sol">Zona Expo / Plaza del Sol</option>
+<option value="Chapala / Ajijic / Jocotepec">Chapala / Ajijic / Jocotepec</option>
+<option value="Tlaquepaque">Tlaquepaque</option>
+<option value="Tonala">Tonala</option>
+<option value="Plaza Galerias">Plaza Galerias</option>
+<option value="Plaza Andares">Plaza Andares</option>
+<option value="Centro Historico GDL">Centro Historico GDL</option>
+<option value="Auditorio Telmex">Auditorio Telmex</option>
+<option value="Arena VFG">Arena VFG</option>
+<option value="Teatro Diana">Teatro Diana</option>
+<option value="Teatro Degollado">Teatro Degollado</option>
+<option value="Estadio Akron">Estadio Akron</option>
+<option value="Estadio Jalisco">Estadio Jalisco</option>
+<option value="Hospital San Javier">Hospital San Javier</option>
+<option value="Puerta de Hierro Andares">Puerta de Hierro Andares</option>
+<option value="Hospital Puerta de Hierro Sur">Hospital Puerta de Hierro Sur</option>
+<option value="IPADE">IPADE</option>
+<option value="ITESO">ITESO</option>
+<option value="Tec de Monterrey">Tec de Monterrey</option>
+<option value="Flextronics Norte">Flextronics Norte</option>
+<option value="Flextronics Sur">Flextronics Sur</option>
+<option value="Technology Park">Technology Park</option>
+<option value="Central Nueva Tlaquepaque">Central Nueva Tlaquepaque</option>
+<option value="Central Vieja">Central Vieja</option>
+<option value="Finca By Alofa">Finca By Alofa</option>
+<option value="Rancho Contento">Rancho Contento</option>
+<option value="Hacienda Ojo de Agua">Hacienda Ojo de Agua</option>
+<option value="Sonora Grill Prime (Real Acueducto)">Sonora Grill Prime (Real Acueducto)</option>
+<option value="Santo Coyote Real">Santo Coyote Real</option>
+<option value="Casa Bariachi">Casa Bariachi</option>
+<option value="Barberini">Barberini</option>
+<option value="Lago del Rey">Lago del Rey</option>
+<option value="Tequila / Guachimontones">Tequila / Guachimontones</option>
+<option value="otros-ori">Otro (escribir manual)</option>
+</select>
+<input id="fori-otros" placeholder="Escribe el origen..." style="display:none;margin-top:6px">
+<div class="fe" id="eor"></div></div>
         <div class="fg"><label class="fl">Destino *</label>
-<select id="fde" onchange="autoPrice()">
+<select id="fde" onchange="autoPrice()" style="width:100%">
 <option value="">Selecciona destino...</option>
-<optgroup label="--- AEROPUERTO ---">
+<option value="Aeropuerto GDL">Aeropuerto GDL</option>
+<option value="Aeropuerto - FBO">Aeropuerto - FBO</option>
+<option value="JW Marriott">JW Marriott</option>
 <option value="Hotel - Aeropuerto">Hotel - Aeropuerto</option>
-<option value="Aeropuerto - Hotel">Aeropuerto - Hotel</option>
-</optgroup>
-<optgroup label="--- DISPOSICION ---">
 <option value="Disposicion por hora (min 3hrs)">Disposicion por hora (min 3hrs)</option>
-</optgroup>
-<optgroup label="--- PAQUETES ---">
-<option value="Centro Historico (paquete)">Centro Historico (paquete)</option>
-<option value="Tlaquepaque / Tonala (paquete)">Tlaquepaque / Tonala (paquete)</option>
-<option value="Chapala / Ajijic / Jocotepec (paquete)">Chapala / Ajijic / Jocotepec (paquete)</option>
-<option value="Tequila / Guachimontones (paquete)">Tequila / Guachimontones (paquete)</option>
-</optgroup>
-<optgroup label="--- ZONAS TURISTICAS ---">
 <option value="Centro Historico GDL">Centro Historico GDL</option>
 <option value="Basilica de Zapopan">Basilica de Zapopan</option>
 <option value="Ferromex / J.Cuervo Express">Ferromex / J.Cuervo Express</option>
@@ -428,113 +471,61 @@ td{padding:10px 12px;vertical-align:middle;font-size:12px}
 <option value="Edisa">Edisa</option>
 <option value="Palcco / Japi / Tequila Lab">Palcco / Japi / Tequila Lab</option>
 <option value="Andares">Andares</option>
-</optgroup>
-<optgroup label="--- TEATROS ---">
 <option value="Auditorio Telmex">Auditorio Telmex</option>
 <option value="Arena VFG">Arena VFG</option>
 <option value="Calle 2">Calle 2</option>
-<option value="Conjunto Santander (CAE - UdeG)">Conjunto Santander (CAE - UdeG)</option>
-<option value="Palcco">Palcco</option>
 <option value="Teatro Diana">Teatro Diana</option>
 <option value="Teatro Degollado">Teatro Degollado</option>
 <option value="Teatro Galerias">Teatro Galerias</option>
-<option value="3 de Marzo">3 de Marzo</option>
-</optgroup>
-<optgroup label="--- RESTAURANTES ---">
 <option value="Sonora Grill Prime (Real Acueducto)">Sonora Grill Prime (Real Acueducto)</option>
 <option value="Sonora Grill La Rioja">Sonora Grill La Rioja</option>
 <option value="Casa Bariachi">Casa Bariachi</option>
-<option value="La Tequila / La Madalena / Mochomo">La Tequila / La Madalena / Mochomo</option>
-<option value="La I Latina / Anita Li">La I Latina / Anita Li</option>
-<option value="Santo Coyote Lerdo de Tejada">Santo Coyote Lerdo de Tejada</option>
 <option value="Santo Coyote Real">Santo Coyote Real</option>
-<option value="Zona Andares (restaurantes)">Zona Andares (restaurantes)</option>
-<option value="Alcalde / La Matera / Polanco">Alcalde / La Matera / Polanco</option>
-<option value="Carnes Garibaldi / Xokol">Carnes Garibaldi / Xokol</option>
-</optgroup>
-<optgroup label="--- SALONES Y EVENTOS ---">
 <option value="Barberini">Barberini</option>
-<option value="Benasuza / La Escoba / La Magdalena">Benasuza / La Escoba / La Magdalena</option>
 <option value="Lago del Rey">Lago del Rey</option>
 <option value="Benavento">Benavento</option>
 <option value="Hda. Santa Lucia">Hda. Santa Lucia</option>
-<option value="Hacienda La Chabacana">Hacienda La Chabacana</option>
-<option value="La Gotera">La Gotera</option>
-<option value="Viveros San Miguel">Viveros San Miguel</option>
-<option value="La Fresneda">La Fresneda</option>
-</optgroup>
-<optgroup label="--- CENTROS DEPORTIVOS ---">
 <option value="Arena Coliseo">Arena Coliseo</option>
 <option value="Estadio 3 de Marzo">Estadio 3 de Marzo</option>
 <option value="Estadio Akron">Estadio Akron</option>
-<option value="Estadio de los Charros">Estadio de los Charros</option>
 <option value="Estadio Jalisco">Estadio Jalisco</option>
-<option value="Centro Acuatico">Centro Acuatico</option>
-<option value="Club de Atlas Colomos">Club de Atlas Colomos</option>
-<option value="Club de Atlas Aeropuerto">Club de Atlas Aeropuerto</option>
 <option value="Club de Golf Santa Anita">Club de Golf Santa Anita</option>
 <option value="El Cielo">El Cielo</option>
-<option value="Country Club">Country Club</option>
 <option value="El Rio Country Club">El Rio Country Club</option>
 <option value="Las Canadas">Las Canadas</option>
 <option value="Rancho Contento">Rancho Contento</option>
-</optgroup>
-<optgroup label="--- CENTRALES ---">
 <option value="Central Nueva Tlaquepaque">Central Nueva Tlaquepaque</option>
 <option value="Central Centro Sur">Central Centro Sur</option>
-<option value="Central Zapopan / Terminal Nuevo Milenio">Central Zapopan / Terminal Nuevo Milenio</option>
 <option value="Central Vieja">Central Vieja</option>
-</optgroup>
-<optgroup label="--- PLAZAS ---">
 <option value="Plaza Galerias">Plaza Galerias</option>
-<option value="La Gran Plaza">La Gran Plaza</option>
-<option value="Plazas Outlet">Plazas Outlet</option>
-<option value="La Gourmeteria / El Palomar">La Gourmeteria / El Palomar</option>
-<option value="Real Center">Real Center</option>
-<option value="Punto Sao Paulo / Midtown">Punto Sao Paulo / Midtown</option>
 <option value="Plaza Andares">Plaza Andares</option>
-<option value="La Perla / Plaza del Sol">La Perla / Plaza del Sol</option>
-</optgroup>
-<optgroup label="--- HOTELES ---">
+<option value="Plazas Outlet">Plazas Outlet</option>
 <option value="Hotel Riu">Hotel Riu</option>
 <option value="Camino Real">Camino Real</option>
 <option value="Hotel Demetria">Hotel Demetria</option>
 <option value="Quinta Real">Quinta Real</option>
 <option value="Westin / Zona Expo">Westin / Zona Expo</option>
-</optgroup>
-<optgroup label="--- CONSULADOS ---">
 <option value="Consulado Americano">Consulado Americano</option>
-<option value="CAS Centro de Atencion">CAS Centro de Atencion</option>
-<option value="Consulado Aleman">Consulado Aleman</option>
-<option value="Consulado Nuevo">Consulado Nuevo</option>
-</optgroup>
-<optgroup label="--- ESCUELAS ---">
 <option value="IPADE">IPADE</option>
 <option value="ITESO">ITESO</option>
 <option value="Tec de Monterrey">Tec de Monterrey</option>
 <option value="UAG">UAG</option>
-</optgroup>
-<optgroup label="--- PARQUES INDUSTRIALES ---">
 <option value="Flextronics Norte">Flextronics Norte</option>
 <option value="Flextronics Sur">Flextronics Sur</option>
 <option value="Jabil / Zona Belenes">Jabil / Zona Belenes</option>
-<option value="Sanmina Corp Planta 1">Sanmina Corp Planta 1</option>
-<option value="Sanmina Planta 2/3 Carretera Chapala">Sanmina Planta 2/3 Carretera Chapala</option>
-<option value="IBM / Honda / Hersheys / Zona El Salto">IBM / Honda / Hersheys / Zona El Salto</option>
 <option value="Technology Park">Technology Park</option>
-</optgroup>
-<optgroup label="--- HOSPITALES ---">
 <option value="Puerta de Hierro Andares">Puerta de Hierro Andares</option>
 <option value="Hospital Puerta de Hierro Sur">Hospital Puerta de Hierro Sur</option>
 <option value="Hospital Real San Jose Chapalita">Hospital Real San Jose Chapalita</option>
-<option value="Hospital Real San Jose Zona Real">Hospital Real San Jose Zona Real</option>
 <option value="Hospital San Javier">Hospital San Javier</option>
-</optgroup>
-
+<option value="otros-dest">Otro (escribir manual)</option>
 </select>
-<div class="fe" id="ede"></div></div>
+<input id="fde-otros" placeholder="Escribe el destino..." style="display:none;margin-top:6px">
+<div class="fe" id="ede"></div>
+</div>
+</div>
       </div>
-      <div class="r3">
+      <div class="r3" style="margin-top:.8rem">
         <div class="fg"><label class="fl">Fecha *</label><input type="date" id="fdt"><div class="fe" id="edt"></div></div>
         <div class="fg"><label class="fl">Hora *</label><input type="text" id="fti" placeholder="00:00" maxlength="5" oninput="fmtTime(this)"><div class="fe" id="eti"></div></div>
         <div class="fg"><label class="fl">Vehiculo</label><select id="fve" onchange="autoPrice()"><option>Sedan ejecutivo</option><option>SUV ejecutiva</option></select></div>
@@ -840,11 +831,34 @@ var TARIFAS = {
 var DESTINOS = Object.keys(TARIFAS);
 
 function autoPrice(){
-  var dest=document.getElementById('fde').value;
+  var ori=document.getElementById('fori')?document.getElementById('fori').value:'';
+  var dest=document.getElementById('fde')?document.getElementById('fde').value:'';
   var veh=document.getElementById('fve').value;
   var fc=document.getElementById('fco');
-  if(!dest||!fc)return;
-  var t=TARIFAS[dest];
+
+  // Show/hide manual inputs
+  var oriOtros=document.getElementById('fori-otros');
+  var destOtros=document.getElementById('fde-otros');
+  if(oriOtros)oriOtros.style.display=(ori==='otros-ori')?'block':'none';
+  if(destOtros)destOtros.style.display=(dest==='otros-dest')?'block':'none';
+
+  if(!fc)return;
+  var tariff='';
+
+  // Aeropuerto logic first
+  if(ori==='Aeropuerto GDL'||ori==='Aeropuerto - FBO'){
+    tariff='Aeropuerto - Hotel';
+  } else if(dest==='Aeropuerto GDL'||dest==='Aeropuerto - FBO'){
+    tariff='Hotel - Aeropuerto';
+  } else if(TARIFAS[dest]){
+    // Use destination directly from tarifas
+    tariff=dest;
+  } else if(TARIFAS[ori]){
+    tariff=ori;
+  }
+
+  if(!tariff)return;
+  var t=TARIFAS[tariff];
   if(!t)return;
   var price=0;
   if(veh==='Sedan ejecutivo')price=t.sedan||0;
@@ -861,199 +875,192 @@ function genPDF(id){
   var jsPDF=window.jspdf.jsPDF;
   var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
   var W=210, H=297;
-
-  // ── COLORS ──
   var black=[10,10,10];
   var white=[255,255,255];
   var gray=[100,100,100];
   var lightgray=[230,230,230];
   var darkgray=[50,50,50];
 
-  // ── BACKGROUND ──
+  // Background
   doc.setFillColor(255,255,255);
   doc.rect(0,0,W,H,'F');
 
-  // ── TOP BAR black ──
+  // Top black bar
   doc.setFillColor(black[0],black[1],black[2]);
-  doc.rect(0,0,W,28,'F');
+  doc.rect(0,0,W,32,'F');
 
-  // ── NOVA TRANSPORTS left ──
+  // NOVA left
   doc.setFont('helvetica','bold');
-  doc.setFontSize(13);
+  doc.setFontSize(16);
   doc.setTextColor(255,255,255);
-  doc.setCharSpace(3);
-  doc.text('NOVA',14,13);
+  doc.setCharSpace(4);
+  doc.text('NOVA',14,14);
   doc.setCharSpace(0);
   doc.setFont('helvetica','normal');
   doc.setFontSize(6);
-  doc.setTextColor(180,180,180);
+  doc.setTextColor(200,200,200);
   doc.setCharSpace(2);
-  doc.text('TRANSPORTACION EJECUTIVA',14,19);
+  doc.text('TRANSPORTACION EJECUTIVA',14,20);
+  doc.text('EXECUTIVE TRANSPORTATION',14,25);
   doc.setCharSpace(0);
 
-  // ── JW MARRIOTT right ──
+  // JW MARRIOTT right
   doc.setFont('helvetica','bold');
-  doc.setFontSize(13);
+  doc.setFontSize(12);
   doc.setTextColor(255,255,255);
-  doc.setCharSpace(2);
-  doc.text('JW MARRIOTT',W-14,13,{align:'right'});
+  doc.setCharSpace(0.5);
+  doc.text('JW MARRIOTT',W-14,14,{align:'right'});
   doc.setCharSpace(0);
   doc.setFont('helvetica','normal');
   doc.setFontSize(6);
-  doc.setTextColor(180,180,180);
-  doc.setCharSpace(2);
-  doc.text('GUADALAJARA',W-14,19,{align:'right'});
+  doc.setTextColor(200,200,200);
   doc.setCharSpace(0);
+  doc.text('GUADALAJARA, MEXICO',W-14,20,{align:'right'});
 
-  // ── DIVIDER LINE ──
-  doc.setDrawColor(200,200,200);
-  doc.setLineWidth(0.2);
-  doc.line(0,28,W,28);
-
-  // ── TITLE ──
-  doc.setFont('helvetica','bold');
-  doc.setFontSize(10);
-  doc.setTextColor(black[0],black[1],black[2]);
-  doc.setCharSpace(3);
-  doc.text('COTIZACION DE SERVICIO',W/2,42,{align:'center'});
-  doc.setCharSpace(0);
-
-  // Small decorative line under title
-  doc.setDrawColor(black[0],black[1],black[2]);
+  // Thin gold line under header
+  doc.setDrawColor(184,151,90);
   doc.setLineWidth(0.5);
-  doc.line(W/2-30,45,W/2+30,45);
+  doc.line(0,32,W,32);
 
-  // ── FOLIO AND DATE ──
+  // Title bilingual
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(9);
+  doc.setTextColor(black[0],black[1],black[2]);
+  doc.setCharSpace(0.5);
+  doc.text('COTIZACION DE SERVICIO / SERVICE QUOTE',W/2,45,{align:'center'});
+  doc.setCharSpace(0);
+
+  // Decorative line
+  doc.setDrawColor(black[0],black[1],black[2]);
+  doc.setLineWidth(0.4);
+  doc.line(W/2-50,48,W/2+50,48);
+
+  // Folio and date
   doc.setFont('helvetica','normal');
   doc.setFontSize(8);
   doc.setTextColor(gray[0],gray[1],gray[2]);
-  doc.text('No. Folio: '+s.id.slice(-8).toUpperCase(), 14, 55);
-  doc.text('Fecha: '+fd(s.date), W-14, 55, {align:'right'});
+  doc.text('No. Folio: '+s.id.slice(-8).toUpperCase(),14,57);
+  doc.text('Fecha / Date: '+fd(s.date),W-14,57,{align:'right'});
 
-  // ── GUEST SECTION ──
-  doc.setFillColor(245,245,245);
-  doc.rect(14,60,W-28,22,'F');
+  // Guest section
+  doc.setFillColor(248,246,241);
+  doc.rect(14,62,W-28,26,'F');
   doc.setDrawColor(200,200,200);
   doc.setLineWidth(0.2);
-  doc.rect(14,60,W-28,22,'S');
+  doc.rect(14,62,W-28,26,'S');
 
   doc.setFont('helvetica','bold');
   doc.setFontSize(7);
   doc.setTextColor(gray[0],gray[1],gray[2]);
   doc.setCharSpace(1.5);
-  doc.text('HUESPED / GUEST',18,67);
+  doc.text('HUESPED / GUEST',18,70);
   doc.setCharSpace(0);
 
   doc.setFont('helvetica','bold');
-  doc.setFontSize(11);
+  doc.setFontSize(12);
   doc.setTextColor(black[0],black[1],black[2]);
-  doc.text(s.name||'—',18,74);
+  doc.text(s.name||'—',18,78);
 
   doc.setFont('helvetica','normal');
   doc.setFontSize(8);
   doc.setTextColor(gray[0],gray[1],gray[2]);
-  var guestInfo=[];
-  if(s.phone)guestInfo.push('Tel: '+s.phone);
-  if(s.flight)guestInfo.push('Vuelo: '+s.flight);
-  guestInfo.push('Pax: '+s.pax);
-  doc.text(guestInfo.join('   '),18,80);
+  var gInfo=[];
+  if(s.phone)gInfo.push('Tel: '+s.phone);
+  if(s.flight)gInfo.push('Vuelo / Flight: '+s.flight);
+  gInfo.push('Pax: '+s.pax);
+  doc.text(gInfo.join('   '),18,84);
 
-  // ── SERVICE DETAILS ──
+  // Service details header
   doc.setFont('helvetica','bold');
   doc.setFontSize(7);
   doc.setTextColor(gray[0],gray[1],gray[2]);
   doc.setCharSpace(1.5);
-  doc.text('DETALLE DEL SERVICIO',14,94);
+  doc.text('DETALLE DEL SERVICIO / SERVICE DETAILS',14,98);
   doc.setCharSpace(0);
   doc.setDrawColor(black[0],black[1],black[2]);
   doc.setLineWidth(0.5);
-  doc.line(14,97,W-14,97);
+  doc.line(14,101,W-14,101);
 
-  // Detail rows
+  // Detail rows bilingual
   var rows=[
-    ['FECHA',fd(s.date),'HORA',s.time||'—'],
-    ['ORIGEN',s.origin||'—','DESTINO',s.dest||'—'],
-    ['VEHICULO',s.vehicle||'—','CHOFER',s.driver||'Por asignar'],
+    ['FECHA / DATE',fd(s.date),'HORA / TIME',s.time||'—'],
+    ['ORIGEN / PICKUP',s.origin||'—','DESTINO / DROP-OFF',s.dest||'—'],
+    ['VEHICULO / VEHICLE',s.vehicle||'—','CHOFER / DRIVER',s.driver||'To be assigned'],
   ];
 
-  var y=106;
+  var y=110;
   rows.forEach(function(row){
-    // Left cell
     doc.setFont('helvetica','bold');
     doc.setFontSize(7);
     doc.setTextColor(gray[0],gray[1],gray[2]);
-    doc.setCharSpace(1);
+    doc.setCharSpace(0.8);
     doc.text(row[0],14,y);
     doc.setCharSpace(0);
     doc.setFont('helvetica','normal');
     doc.setFontSize(9);
     doc.setTextColor(black[0],black[1],black[2]);
-    var val1=String(row[1]).substring(0,30);
-    doc.text(val1,14,y+6);
+    doc.text(String(row[1]).substring(0,32),14,y+6);
 
-    // Right cell
     doc.setFont('helvetica','bold');
     doc.setFontSize(7);
     doc.setTextColor(gray[0],gray[1],gray[2]);
-    doc.setCharSpace(1);
+    doc.setCharSpace(0.8);
     doc.text(row[2],W/2+5,y);
     doc.setCharSpace(0);
     doc.setFont('helvetica','normal');
     doc.setFontSize(9);
     doc.setTextColor(black[0],black[1],black[2]);
-    var val2=String(row[3]).substring(0,30);
-    doc.text(val2,W/2+5,y+6);
+    doc.text(String(row[3]).substring(0,32),W/2+5,y+6);
 
-    // Divider
     doc.setDrawColor(230,230,230);
     doc.setLineWidth(0.2);
     doc.line(14,y+10,W-14,y+10);
-    y+=14;
+    y+=15;
   });
 
-  // ── PRICE BOX ──
-  var py=y+5;
+  // Price box
+  var py=y+6;
   doc.setFillColor(black[0],black[1],black[2]);
-  doc.rect(14,py,W-28,20,'F');
+  doc.rect(14,py,W-28,22,'F');
 
   doc.setFont('helvetica','bold');
   doc.setFontSize(8);
   doc.setTextColor(255,255,255);
-  doc.setCharSpace(1.5);
-  doc.text('TARIFA DEL SERVICIO',18,py+8);
+  doc.setCharSpace(1);
+  doc.text('TARIFA DEL SERVICIO / SERVICE RATE',18,py+9);
   doc.setCharSpace(0);
 
   doc.setFont('helvetica','bold');
-  doc.setFontSize(14);
+  doc.setFontSize(15);
   doc.setTextColor(255,255,255);
-  doc.text(fm(s.cost)+' MXN',W-18,py+12,{align:'right'});
+  doc.text(fm(s.cost)+' MXN',W-18,py+14,{align:'right'});
 
   doc.setFont('helvetica','normal');
   doc.setFontSize(7);
   doc.setTextColor(180,180,180);
-  doc.text('Precio IVA incluido',18,py+16);
+  doc.text('Precio IVA incluido / VAT included',18,py+18);
 
-  // ── PAYMENT ──
-  var pmy=py+28;
+  // Payment
+  var pmy=py+30;
   doc.setFont('helvetica','bold');
   doc.setFontSize(7);
   doc.setTextColor(gray[0],gray[1],gray[2]);
-  doc.setCharSpace(1);
-  doc.text('METODO DE PAGO',14,pmy);
+  doc.setCharSpace(0.8);
+  doc.text('METODO DE PAGO / PAYMENT METHOD',14,pmy);
   doc.setCharSpace(0);
   doc.setFont('helvetica','normal');
   doc.setFontSize(9);
   doc.setTextColor(black[0],black[1],black[2]);
   doc.text(s.payment||'—',14,pmy+6);
 
-  // ── NOTES ──
+  // Notes
   if(s.notes){
-    var ny=pmy+18;
+    var ny=pmy+20;
     doc.setFont('helvetica','bold');
     doc.setFontSize(7);
     doc.setTextColor(gray[0],gray[1],gray[2]);
-    doc.setCharSpace(1);
-    doc.text('NOTAS',14,ny);
+    doc.setCharSpace(0.8);
+    doc.text('NOTAS / NOTES',14,ny);
     doc.setCharSpace(0);
     doc.setDrawColor(200,200,200);
     doc.setLineWidth(0.2);
@@ -1065,8 +1072,8 @@ function genPDF(id){
     doc.text(noteLines,14,ny+8);
   }
 
-  // ── TERMS ──
-  var ty=230;
+  // Terms bilingual
+  var ty=235;
   doc.setDrawColor(200,200,200);
   doc.setLineWidth(0.2);
   doc.line(14,ty,W-14,ty);
@@ -1074,17 +1081,17 @@ function genPDF(id){
   doc.setFont('helvetica','bold');
   doc.setFontSize(7);
   doc.setTextColor(gray[0],gray[1],gray[2]);
-  doc.setCharSpace(1.5);
-  doc.text('TERMINOS Y CONDICIONES',14,ty+7);
+  doc.setCharSpace(1);
+  doc.text('TERMINOS Y CONDICIONES / TERMS & CONDITIONS',14,ty+7);
   doc.setCharSpace(0);
 
   var terms=[
-    'Precios IVA incluido. Precios sujetos a cambio sin previo aviso.',
-    'Cancelaciones no realizadas con 48 hrs de anticipacion tendran penalizacion del 50%.',
-    'En caso de mover la unidad se cobrara el 100% del servicio.',
-    'La tolerancia para espera de servicios es de 15 minutos maximo.',
-    'Tarifas aeropuerto-hotel incluyen derecho de piso y agua de cortesia.',
-    'Cualquier cambio en pasajeros o vehiculo puede generar cambios en el precio.'
+    'Precios IVA incluido / VAT included. Precios sujetos a cambio / Prices subject to change.',
+    'Cancelaciones con menos de 48 hrs tendran penalizacion del 50% / Cancellations under 48hrs: 50% fee.',
+    'En caso de mover la unidad se cobrara el 100% / If unit is dispatched, 100% will be charged.',
+    'Tolerancia de espera: 15 minutos maximo / Maximum waiting time: 15 minutes.',
+    'Tarifas aeropuerto incluyen derecho de piso y agua / Airport rates include floor fee and water.',
+    'Cambios en pasajeros o vehiculo pueden generar cambio en precio / Changes may affect pricing.',
   ];
 
   doc.setFont('helvetica','normal');
@@ -1094,7 +1101,7 @@ function genPDF(id){
     doc.text('• '+t,14,ty+14+(i*5.5));
   });
 
-  // ── FOOTER ──
+  // Footer
   doc.setFillColor(black[0],black[1],black[2]);
   doc.rect(0,H-14,W,14,'F');
 
@@ -1107,10 +1114,9 @@ function genPDF(id){
   doc.setFont('helvetica','normal');
   doc.setFontSize(6);
   doc.setTextColor(180,180,180);
-  doc.text('Transportacion Ejecutiva  |  Guadalajara, Mexico',W/2,H-3,{align:'center'});
+  doc.text('Transportacion Ejecutiva  |  Executive Transportation  |  Guadalajara, Mexico',W/2,H-3,{align:'center'});
 
-  // Save
-  var fname='Cotizacion_'+( s.name||'').replace(/\s+/g,'_')+'_'+fd(s.date).replace(/\//g,'-')+'.pdf';
+  var fname='Cotizacion_'+(s.name||'').replace(/\s+/g,'_')+'_'+fd(s.date).replace(/\//g,'-')+'.pdf';
   doc.save(fname);
   toast('PDF generado','ok');
 }
@@ -1319,7 +1325,11 @@ function rt(ctx){
 function openNew(){
   eId=null;
   document.getElementById('mtit').textContent='Nuevo Servicio';
-  ['fn','fph','ffl','fori','fde','fti','fdr','fno'].forEach(function(id){document.getElementById(id).value='';});
+  ['fn','fph','ffl','fti','fdr','fno'].forEach(function(id){document.getElementById(id).value=''});
+  var selIds=['fori','fde'];selIds.forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  var fc=document.getElementById('fco');if(fc)fc.value='';
+  var fooi=document.getElementById('fori-otros');if(fooi){fooi.value='';fooi.style.display='none';}
+  var food=document.getElementById('fde-otros');if(food){food.value='';food.style.display='none';};
   var fc=document.getElementById('fco');if(fc)fc.value='';
   document.getElementById('fpx').value='1';
   document.getElementById('fve').value='Sedan ejecutivo';
@@ -1337,8 +1347,22 @@ function opEd(id){
   document.getElementById('fn').value=s.name||'';
   document.getElementById('fph').value=s.phone||'';
   document.getElementById('ffl').value=s.flight||'';
-  document.getElementById('fori').value=s.origin||'';
-  document.getElementById('fde').value=s.dest||'';
+  var oriSel=document.getElementById('fori');
+  var oriOtrosInp=document.getElementById('fori-otros');
+  if(oriSel){
+    var oriFound=false;
+    for(var oi=0;oi<oriSel.options.length;oi++){if(oriSel.options[oi].value===s.origin){oriFound=true;break;}}
+    if(oriFound){oriSel.value=s.origin||'';if(oriOtrosInp)oriOtrosInp.style.display='none';}
+    else{oriSel.value='otros-ori';if(oriOtrosInp){oriOtrosInp.value=s.origin||'';oriOtrosInp.style.display='block';}}
+  }
+  var destSel=document.getElementById('fde');
+  var destOtrosInp=document.getElementById('fde-otros');
+  if(destSel){
+    var destFound=false;
+    for(var di=0;di<destSel.options.length;di++){if(destSel.options[di].value===s.dest){destFound=true;break;}}
+    if(destFound){destSel.value=s.dest||'';if(destOtrosInp)destOtrosInp.style.display='none';}
+    else{destSel.value='otros-dest';if(destOtrosInp){destOtrosInp.value=s.dest||'';destOtrosInp.style.display='block';}}
+  }
   document.getElementById('fdt').value=s.date||'';
   document.getElementById('fti').value=s.time||'';
   document.getElementById('fdr').value=s.driver||'';
@@ -1354,7 +1378,11 @@ function opEd(id){
 function gv(id){return document.getElementById(id).value.trim();}
 
 function saveSvc(){
-  var nm=gv('fn'),or=gv('fori'),de=gv('fde'),dt=gv('fdt'),ti=gv('fti');
+  var nm=gv('fn'),dt=gv('fdt'),ti=gv('fti');
+  var oriSel=document.getElementById('fori');
+  var or=oriSel&&oriSel.value==='otros-ori'?gv('fori-otros'):(oriSel?oriSel.value:'');
+  var destSel=document.getElementById('fde');
+  var de=destSel&&destSel.value==='otros-dest'?gv('fde-otros'):(destSel?destSel.value:'');
   var ok=true;
   [[nm,'en'],[or,'eor'],[de,'ede'],[dt,'edt'],[ti,'eti']].forEach(function(pair){
     document.getElementById(pair[1]).textContent=pair[0]?'':'Requerido';
@@ -1546,12 +1574,27 @@ function rUsers(){
 }
 
 function expXLS(){
-  var rows=SVC.map(function(s){return{'Fecha':fd(s.date),'Hora':s.time,'Cliente':s.name,'Telefono':s.phone||'','Pasajeros':s.pax,'Vuelo':s.flight||'','Origen':s.origin,'Destino':s.dest,'Vehiculo':s.vehicle,'Chofer':s.driver||'','Metodo de pago':s.payment,'Costo MXN':s.cost!=null?Number(s.cost):0,'Estado':s.status,'Creado por':s.createdBy,'Fecha creacion':s.createdAt};});
+  // Use active filters if any
+  var l=SVC.slice();
+  var sfrom=window._sFrom||window._dFrom||'';
+  var sto=window._sTo||window._dTo||'';
+  var fname='nova_transports_'+td();
+  if(sfrom&&sto){
+    l=l.filter(function(x){return x.date>=sfrom&&x.date<=sto;});
+    fname='nova_transports_'+sfrom+'_al_'+sto;
+  }else if(sfrom){
+    l=l.filter(function(x){return x.date>=sfrom;});
+  }else if(sto){
+    l=l.filter(function(x){return x.date<=sto;});
+  }
+  l=l.sort(function(a,b){return((a.date||'')+(a.time||'')).localeCompare((b.date||'')+(b.time||''));});
+  var rows=l.map(function(s){return{'Fecha':fd(s.date),'Hora':s.time,'Cliente':s.name,'Telefono':s.phone||'','Pasajeros':s.pax,'Vuelo':s.flight||'','Origen':s.origin,'Destino':s.dest,'Vehiculo':s.vehicle,'Chofer':s.driver||'','Metodo de pago':s.payment,'Costo MXN':s.cost!=null?Number(s.cost):0,'Estado':s.status,'Creado por':s.createdBy,'Fecha creacion':s.createdAt};});
+  if(!rows.length){toast('No hay servicios en el rango seleccionado','inf');return;}
   var ws=XLSX.utils.json_to_sheet(rows);
   var wb=XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb,ws,'Servicios');
-  XLSX.writeFile(wb,'nova_transports_'+td()+'.xlsx');
-  toast('Excel exportado','ok');
+  XLSX.writeFile(wb,fname+'.xlsx');
+  toast('Excel exportado: '+rows.length+' servicios','ok');
 }
 
 function oM(id){document.getElementById(id).classList.add('on');}
