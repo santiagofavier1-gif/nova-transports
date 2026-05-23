@@ -1,0 +1,72 @@
+/* ============================================================
+   NOVA TRANSPORTS · base.css
+   Reset, tipografía base y optimizaciones móviles
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;  /* sin flash azul al tocar en móvil */
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;          /* números alineados */
+  transition: background var(--t-med), color var(--t-med);
+  overflow-x: hidden;                          /* nada se sale de pantalla */
+  min-height: 100vh;
+  min-height: 100dvh;                          /* altura real en móvil */
+}
+
+/* tipografía */
+h1 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
+h2 { font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+h3 { font-size: 16px; font-weight: 600; }
+h4 { font-size: 14px; font-weight: 600; }
+p  { font-size: 15px; }
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, select, textarea { font-family: inherit; font-size: 16px; }  /* 16px evita zoom en iOS */
+img { max-width: 100%; display: block; }
+
+/* scroll suave y discreto */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: var(--r-full); }
+
+/* selección de texto */
+::selection { background: var(--emerald-br); color: #fff; }
+
+/* utilidades */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.hidden { display: none !important; }
+
+/* targets táctiles mínimos (estándar Apple 44px) */
+.touch { min-width: 44px; min-height: 44px; }
+
+/* animación de entrada (staggered reveal) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp var(--t-med) both; }
+
+/* shimmer para skeleton loaders */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
