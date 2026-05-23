@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0B0F0D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Nova Transports</title>
+
+<!-- Iconos Tabler -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/tabler-icons.min.css">
+
+<!-- Estilos (modulares) -->
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/layout.css">
+<link rel="stylesheet" href="styles/components.css">
+
+<!-- Firebase SDK 9 (compat) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<style>
+  /* ---- LOGIN premium (inline para que cargue al instante) ---- */
+  #login {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(43,176,137,.12), transparent 50%),
+      linear-gradient(160deg, #0E2A22 0%, #0B1815 50%, #08110E 100%);
+    padding: 24px;
+    z-index: 1000;
+  }
+  #login.hidden { display: none; }
+  .login-card {
+    width: 100%; max-width: 380px;
+    background: rgba(18,24,21,.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 24px;
+    padding: 40px 28px;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0,0,0,.5);
+  }
+  .login-card::before {
+    content: ''; position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, transparent, #34D399, transparent);
+  }
+  .login-logo {
+    width: 56px; height: 56px; margin: 0 auto 20px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #1B6B4F, #0E4435);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 24px rgba(43,176,137,.3);
+  }
+  .login-logo i { font-size: 28px; color: #34D399; }
+  .login-brand {
+    text-align: center; font-size: 26px; font-weight: 700;
+    letter-spacing: .08em; color: #F4F6F5; margin-bottom: 4px;
+  }
+  .login-sub {
+    text-align: center; font-size: 9px; letter-spacing: .25em;
+    text-transform: uppercase; color: #5F6A64; margin-bottom: 28px;
+  }
+  .login-field { margin-bottom: 16px; }
+  .login-field label {
+    display: block; font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: #9BA5A0; margin-bottom: 8px;
+  }
+  .login-field input {
+    width: 100%; min-height: 50px;
+    padding: 0 16px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    color: #F4F6F5; font-size: 16px;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .login-field input:focus {
+    outline: none; border-color: #2BB089;
+    box-shadow: 0 0 0 3px rgba(43,176,137,.18);
+  }
+  .login-btn {
+    width: 100%; min-height: 52px; margin-top: 8px;
+    background: linear-gradient(145deg, #2BB089, #1B6B4F);
+    color: #fff; font-size: 13px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    border-radius: 12px;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .login-btn:active { transform: scale(.98); box-shadow: 0 0 24px rgba(43,176,137,.4); }
+  .login-err {
+    color: #F08585; font-size: 12px; text-align: center;
+    margin-top: 12px; min-height: 16px;
+  }
+  .login-hint {
+    text-align: center; font-size: 11px; color: #5F6A64;
+    margin-top: 20px; padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+  .login-hint b { color: #9BA5A0; }
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="login">
+  <div class="login-card">
+    <div class="login-logo"><i class="ti ti-car"></i></div>
+    <div class="login-brand">NOVA</div>
+    <div class="login-sub">Executive Service Platform</div>
+
+    <div class="login-field">
+      <label>Usuario</label>
+      <input id="lu" type="text" placeholder="usuario" autocomplete="username" autocapitalize="off">
+    </div>
+    <div class="login-field">
+      <label>Contraseña</label>
+      <input id="lp" type="password" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="login-btn" id="login-btn">Iniciar Sesión</button>
+    <div class="login-err" id="login-err"></div>
+    <div class="login-hint">Front Desk: <b>recepcion</b> / <b>1234</b></div>
+  </div>
+</div>
+
+<!-- ============ APP SHELL ============ -->
+<div id="app" class="app hidden">
+
+  <!-- Sidebar / Drawer -->
+  <aside id="sidebar" class="sidebar"></aside>
+  <div id="drawer-overlay" class="drawer-overlay"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-l">
+      <button class="icon-btn menu-btn" id="menu-btn" aria-label="Menú"><i class="ti ti-menu-2"></i></button>
+      <div class="header-logo"><i class="ti ti-car"></i></div>
+      <div class="header-title" id="page-title">Dashboard</div>
+    </div>
+    <div class="header-r">
+      <button class="icon-btn" id="theme-btn" aria-label="Modo oscuro"><i class="ti ti-moon"></i></button>
+      <button class="icon-btn" id="notif-btn" aria-label="Notificaciones"><i class="ti ti-bell"></i><span class="dot"></span></button>
+      <div class="avatar" id="header-avatar">--</div>
+    </div>
+  </header>
+
+  <!-- Contenido (cada página se inyecta aquí) -->
+  <main class="main" id="view"></main>
+
+  <!-- Bottom navigation (móvil) -->
+  <nav id="bottomnav" class="bottomnav"></nav>
+</div>
+
+<!-- ============ APP (módulos ES) ============ -->
+<script type="module" src="app.js"></script>
+</body>
+</html>

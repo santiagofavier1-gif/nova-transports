@@ -1,0 +1,119 @@
+/* ============================================================
+   NOVA TRANSPORTS · tokens.css
+   Sistema de diseño global — Dark Emerald Luxury
+   Todas las variables viven aquí. Cambiar un color aquí
+   lo cambia en toda la app.
+   ============================================================ */
+
+:root {
+  /* ---- PALETA: MODO CLARO (premium, limpio) ---- */
+  --bg:           #FAFBFA;   /* fondo de página */
+  --surface:      #FFFFFF;   /* tarjetas */
+  --surface-2:    #F4F6F5;   /* superficies elevadas / hover */
+  --surface-3:    #ECEFEE;   /* inputs, chips */
+
+  --text:         #0B0F0D;   /* texto principal (negro mate) */
+  --text-2:       #5A655F;   /* texto secundario (gris elegante) */
+  --text-3:       #99A39D;   /* hints, placeholders */
+
+  --emerald:      #1B6B4F;   /* esmeralda primario */
+  --emerald-2:    #15573F;   /* esmeralda oscuro (hover) */
+  --emerald-br:   #2BB089;   /* esmeralda brillante (acentos) */
+  --emerald-glow: #34D399;   /* esmeralda glow (highlights) */
+  --on-emerald:   #FFFFFF;   /* texto sobre esmeralda */
+
+  --border:       rgba(11,15,13,.10);   /* borde sutil */
+  --border-2:     rgba(11,15,13,.16);   /* borde énfasis */
+
+  /* estados de servicio (consistentes claro/oscuro) */
+  --st-solicitado: #B8760A;
+  --st-confirmado: #1B6B4F;
+  --st-chofer:     #1A7A7A;
+  --st-proceso:    #C2691B;
+  --st-completado: #0E4435;
+  --st-cancelado:  #C0392B;
+  --st-noshow:     #6B7280;
+
+  /* semánticos */
+  --ok:    #1B6B4F;
+  --warn:  #B8760A;
+  --danger:#C0392B;
+  --info:  #1A7A7A;
+
+  /* ---- SPACING (escala base 4px) ---- */
+  --s1: 4px;   --s2: 8px;   --s3: 12px;  --s4: 16px;
+  --s5: 24px;  --s6: 32px;  --s7: 48px;  --s8: 64px;
+
+  /* ---- RADIOS ---- */
+  --r-sm:  8px;
+  --r-md:  12px;
+  --r-lg:  16px;
+  --r-xl:  24px;
+  --r-full: 999px;
+
+  /* ---- SOMBRAS (suaves, premium) ---- */
+  --sh-sm: 0 1px 2px rgba(11,15,13,.06);
+  --sh-md: 0 4px 16px rgba(11,15,13,.08);
+  --sh-lg: 0 12px 40px rgba(11,15,13,.12);
+  --glow:  0 0 24px rgba(43,176,137,.22);
+
+  /* ---- TIPOGRAFÍA ---- */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+
+  /* ---- LAYOUT ---- */
+  --header-h: 56px;
+  --bottomnav-h: 64px;
+  --sidebar-w: 244px;
+  --maxw: 1280px;
+
+  /* ---- TRANSICIONES ---- */
+  --t-fast: .15s cubic-bezier(.4,0,.2,1);
+  --t-med:  .25s cubic-bezier(.4,0,.2,1);
+  --t-slow: .4s cubic-bezier(.4,0,.2,1);
+
+  /* área segura iPhone (notch / home indicator) */
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ============================================================
+   MODO OSCURO — Dark Emerald Luxury (el tema estrella)
+   ============================================================ */
+:root.dark {
+  --bg:        #0B0F0D;   /* negro mate */
+  --surface:   #121815;   /* tarjetas */
+  --surface-2: #1A2420;   /* superficies elevadas */
+  --surface-3: #222E29;   /* inputs, chips */
+
+  --text:      #F4F6F5;   /* blanco hueso */
+  --text-2:    #9BA5A0;   /* gris elegante */
+  --text-3:    #5F6A64;   /* hints */
+
+  --emerald:    #1B6B4F;
+  --emerald-2:  #2BB089;   /* en oscuro, el hover aclara */
+  --emerald-br: #2BB089;
+  --emerald-glow:#34D399;
+  --on-emerald: #FFFFFF;
+
+  --border:    rgba(255,255,255,.07);
+  --border-2:  rgba(255,255,255,.13);
+
+  /* estados ajustados para fondo oscuro (más brillantes) */
+  --st-solicitado: #E0A858;
+  --st-confirmado: #34D399;
+  --st-chofer:     #5FC8C8;
+  --st-proceso:    #F0A35E;
+  --st-completado: #2BB089;
+  --st-cancelado:  #F08585;
+  --st-noshow:     #9BA5A0;
+
+  --ok:    #34D399;
+  --warn:  #E0A858;
+  --danger:#F08585;
+  --info:  #5FC8C8;
+
+  --sh-sm: 0 1px 2px rgba(0,0,0,.3);
+  --sh-md: 0 4px 16px rgba(0,0,0,.35);
+  --sh-lg: 0 12px 40px rgba(0,0,0,.5);
+  --glow:  0 0 24px rgba(43,176,137,.3);
+}
