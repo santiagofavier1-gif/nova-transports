@@ -94,9 +94,11 @@ input[type="time"]{-webkit-appearance:none}
 /* Tarjetas móviles: ocultas en escritorio, visibles y bonitas en celular */
 .mobile-table-wrap{display:none}
 @media(max-width:768px){
-  /* En celular: ocultar la tabla ancha y mostrar las tarjetas */
-  .tw{display:none!important}
+  /* En celular: ocultar SOLO la tabla interior y mostrar las tarjetas */
+  .tsx{display:none!important}
   .mobile-table-wrap{display:block!important}
+  /* el contenedor sin fondo en móvil, para que solo se vean las tarjetas */
+  .tw{background:transparent!important;border:none!important;box-shadow:none!important;overflow:visible!important}
   .mobile-row{
     background:#FFFFFF;
     border:1px solid #F0EDE6;
@@ -542,8 +544,14 @@ body.dark-mode thead th{color:var(--c1)}
 body.dark-mode .ds-card.alt .ds-num{color:var(--c0)}
 body.dark-mode .sico{opacity:.1}
 /* ============================================================
-   FONDO DEL LOGIN — carrusel de flotilla con zoom cinematográfico
+   PANEL LIMPIO (NOVA) — ocultar lo que estorba en el dashboard.
+   Solo se ocultan de la vista; las funciones siguen intactas.
    ============================================================ */
+#pg-dash #day-timeline { display: none !important; }  /* Línea del día */
+#pg-dash #day-map { display: none !important; }        /* Mapa de servicios */
+#pg-dash #alerts { display: none !important; }          /* Barra "Todo al día" */
+
+
 #scr-login { position: relative; overflow: hidden; }
 
 .login-bg {
@@ -2370,19 +2378,9 @@ function renderDaySummary(){
   var prox=activos.filter(function(x){if(x.status==='Completado')return false;try{return new Date(x.date+'T'+x.time)>now;}catch(e){return false;}})
     .sort(function(a,b){return(a.time||'').localeCompare(b.time||'');})[0];
   var proxTxt=prox?prox.time+' · '+prox.name:'Sin pendientes';
-  var cards=[
-    {lb:'Servicios hoy',val:activos.length,sb:conf+' confirmados · '+pend+' por atender',ic:'ti-calendar-event',alt:false},
-    {lb:'Proximo de hoy',val:prox?prox.time:'—',sb:prox?(prox.name.length>18?prox.name.slice(0,18)+'…':prox.name):'sin pendientes',ic:'ti-clock-hour-4',alt:true}
-  ];
+  var cards=[];
   if(C){
     cards.push({lb:'Ingresos del dia',val:fm(ing),sb:'servicios activos hoy',ic:'ti-cash',alt:false});
-    var sem=SVC.filter(function(x){
-      try{var d=new Date(x.date+'T00:00');var diff=(now-d)/86400000;return diff>=0&&diff<7&&x.status!=='Cancelado'&&x.status!=='No Show';}catch(e){return false;}
-    }).length;
-    cards.push({lb:'Ultimos 7 dias',val:sem,sb:'servicios en la semana',ic:'ti-trending-up',alt:true,spark:true});
-  }else{
-    cards.push({lb:'Confirmados hoy',val:conf,sb:'listos para operar',ic:'ti-circle-check',alt:false});
-    cards.push({lb:'Por atender',val:pend,sb:'requieren confirmacion',ic:'ti-alert-circle',alt:true,spark:true});
   }
   el.innerHTML='<div class="day-sum">'+cards.map(function(c){
     return '<div class="ds-card'+(c.alt?' alt':'')+'"><i class="ti '+c.ic+' ds-ic"></i><div class="ds-lb">'+c.lb+'</div><div class="ds-val">'+c.val+'</div><div class="ds-sub">'+c.sb+'</div>'+(c.spark?sparkSvg():'')+'</div>';
